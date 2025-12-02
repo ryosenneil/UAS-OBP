@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Data Transaksi</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" th:href="@{/css/table.css}" />
+    <link rel="stylesheet" th:href="@{/css/form.css}" />
+    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a th:href="@{/}">Sistem Sekolah</a>
+      </div>
+      <div class="navbar-right">
+        <a th:href="@{/staff}">Staff</a>
+        <a th:href="@{/pelajaran}">Pelajaran</a>
+        <a th:href="@{/guru}">Guru</a>
+        <a th:href="@{/transaksi}">Transaksi</a>
+        <a th:href="@{/auth/logout}" class="logout-btn">Logout</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div id="feedback-form">
+        <h2 class="header">Form Transaksi</h2>
+
+        <form
+          th:action="@{/transaksi/submit}"
+          th:object="${transaksi}"
+          method="post"
+          class="form-group"
+        >
+          <label>ID:</label>
+          <input type="text" th:field="*{id}" readonly />
+
+          <label>Pilih Orang (Guru/Staff):</label>
+          <select id="orangSelect" th:field="*{orang}">
+            <option value="">-- Pilih Orang --</option>
+            <option
+              th:each="o : ${orangList}"
+              th:value="${o.id}"
+              th:data-gaji="${o.hitungGaji()}"
+              th:text="${o.nama + ' (' + o.jenis + ')'}"
+            ></option>
+          </select>
+
+          <label>Gaji:</label>
+          <input id="gajiField" type="number" th:field="*{gaji}" readonly />
+
+          <label>Tanggal:</label>
+          <input type="date" th:field="*{tanggal}" />
+
+          <label>Deskripsi:</label>
+          <textarea
+            th:field="*{deskripsi}"
+            rows="3"
+            style="width: 280px; height: 100px"
+          ></textarea>
+
+          <button type="submit" name="add">Add</button>
+          <button type="submit" name="edit">Edit</button>
+          <button
+            type="submit"
+            name="delete"
+            onclick="return confirm('Yakin ingin menghapus transaksi ini?');"
+          >
+            Delete
+          </button>
+        </form>
+      </div>
+
+      <hr />
+
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Pekerjaan</th>
+            <th>Gaji</th>
+            <th>Tanggal</th>
+            <th>Deskripsi</th>
+            <th>Select</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="t : ${list}">
+            <td th:text="${t.id}"></td>
+            <td th:text="${t.orang.nama}"></td>
+            <td th:text="${t.orang.jenis}"></td>
+            <td th:text="${t.gaji}"></td>
+            <td th:text="${t.tanggal}"></td>
+            <td th:text="${t.deskripsi}"></td>
+            <td>
+              <a th:href="@{'/transaksi/edit/' + ${t.id}}">Select</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      const orangSelect = document.getElementById("orangSelect");
+      const gajiField = document.getElementById("gajiField");
+
+      function updateGaji() {
+        if (orangSelect.value !== "") {
+          gajiField.value =
+            orangSelect.options[orangSelect.selectedIndex].dataset.gaji;
+        } else {
+          gajiField.value = "";
+        }
+      }
+
+      orangSelect.addEventListener("change", updateGaji);
+      updateGaji();
+    </script>
+  </body>
+</html>

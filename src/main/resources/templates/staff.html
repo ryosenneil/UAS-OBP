@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Data Staff</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" th:href="@{/css/table.css}" />
+    <link rel="stylesheet" th:href="@{/css/form.css}" />
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a th:href="@{/}">Sistem Sekolah</a>
+      </div>
+      <div class="navbar-right">
+        <a th:href="@{/staff}">Staff</a>
+        <a th:href="@{/pelajaran}">Pelajaran</a>
+        <a th:href="@{/guru}">Guru</a>
+        <a th:href="@{/transaksi}">Transaksi</a>
+        <a th:href="@{/auth/logout}" class="logout-btn">Logout</a>
+
+      </div>
+    </nav>
+    
+
+    <div class="container">
+      <div id="feedback-form">
+        <h2 class="header">Form Management</h2>
+
+        <form
+          th:action="@{${staffRec.id} != null ? '/staff/submit/' + ${staffRec.id} : '/staff/submit'}"
+          th:object="${staffRec}"
+          method="post"
+          class="form-group"
+        >
+          <label>ID :</label>
+          <input type="text" th:field="*{id}" readonly />
+
+          <label>Nama:</label>
+          <input type="text" th:field="*{nama}" required />
+
+          <label>Umur:</label>
+          <input type="number" th:field="*{umur}" required />
+
+          <label>Gaji Pokok:</label>
+          <input type="number" th:field="*{gajiPokok}" required />
+
+          <label>Divisi:</label>
+          <input type="text" th:field="*{divisi}" required />
+
+          <button type="submit" name="add">Add</button>
+          <button type="submit" name="edit">Edit</button>
+          <button
+            type="submit"
+            name="delete"
+            onclick="return confirm('Yakin ingin menghapus staff ini?');"
+          >
+            Delete
+          </button>
+        </form>
+      </div>
+
+      <hr />
+
+      
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Umur</th>
+            <th>Gaji Total</th>
+            <th>Divisi</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr th:each="s : ${staffList}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.nama}"></td>
+            <td th:text="${s.umur}"></td>
+            <td th:text="${s.gajiPokok}"></td>
+            <td th:text="${s.divisi}"></td>
+            <td>
+              <a th:href="@{'/staff/' + ${s.id}}">Select</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

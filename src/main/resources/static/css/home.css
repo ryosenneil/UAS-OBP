@@ -1,0 +1,55 @@
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+
+.first-box {
+  width: auto;
+  float: left;
+  height: auto;
+  margin: 50px
+}
+
+.second-box {
+  width: auto;
+  height: auto;
+  float: left;
+  margin: 50px
+}
+
+
+.navbar {
+  background-color: #2288ef;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left a {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 25px;
+}
+
+.navbar-right a {
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+}
+
+.navbar-right a:hover {
+  color: #f0d58c;
+  transform: translateY(-2px);
+}

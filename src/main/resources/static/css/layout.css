@@ -1,0 +1,115 @@
+/* ====== LAYOUT GLOBAL 2 KOLOM ====== */
+.page-wrapper {
+    display: flex;
+    gap: 25px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Kiri (Tabel) */
+.left-table {
+    flex: 1;                   /* otomatis besar */
+    min-width: 55%;
+}
+
+/* Kanan (Form) */
+.right-form {
+    width: 40%;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ====== FORM ====== */
+.right-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.right-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.right-form input,
+.right-form select,
+.right-form textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 14px;
+}
+
+.right-form button {
+    margin-top: 10px;
+    padding: 12px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.right-form button:hover {
+    background: #3730a3;
+}
+
+/* ====== TABEL UNIVERSAL ====== */
+.styled-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.95em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.styled-table thead tr {
+    background-color: #2563eb;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:hover {
+    background: #e0e7ff;
+    cursor: pointer;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #2563eb;
+}
+
+/* Link aksi */
+.styled-table a {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+    .page-wrapper {
+        flex-direction: column;
+    }
+
+    .left-table,
+    .right-form {
+        width: 100%;
+    }
+}

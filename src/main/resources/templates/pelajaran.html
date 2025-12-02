@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Data Pelajaran</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" th:href="@{/css/table.css}" />
+    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+    <link rel="stylesheet" th:href="@{/css/form.css}" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a th:href="@{/}">Sistem Sekolah</a>
+      </div>
+      <div class="navbar-right">
+        <a th:href="@{/staff}">Staff</a>
+        <a th:href="@{/pelajaran}">Pelajaran</a>
+        <a th:href="@{/guru}">Guru</a>
+        <a th:href="@{/transaksi}">Transaksi</a>
+        <a th:href="@{/auth/logout}" class="logout-btn">Logout</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div id="feedback-form">
+        <h2 class="header">Form Pelajaran</h2>
+        <form
+          th:action="@{/pelajaran/submit}"
+          th:object="${pelajaran}"
+          method="post"
+          class="form-group"
+        >
+          <input type="hidden" th:field="*{id}" />
+          <label>Nama Pelajaran:</label>
+          <input type="text" th:field="*{namaPelajaran}" required />
+          <button type="submit" name="add">Add</button>
+          <button
+            type="submit"
+            name="edit"
+            th:disabled="${pelajaran.id == null}"
+          >
+            Edit
+          </button>
+          <button
+            type="submit"
+            name="delete"
+            th:disabled="${pelajaran.id == null}"
+            onclick="return confirm('Yakin ingin menghapus?');"
+          >
+            Delete
+          </button>
+        </form>
+      </div>
+
+      <br /><br />
+
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Pelajaran</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="p : ${pelajaranList}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.namaPelajaran}"></td>
+            <td><a th:href="@{'/pelajaran/' + ${p.id}}">Select</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

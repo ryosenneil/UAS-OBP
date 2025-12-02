@@ -1,0 +1,128 @@
+/* ===============================
+   FORM WRAPPER (Container Form)
+================================ */
+#feedback-form {
+    width: 450px;
+    padding: 35px 40px;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.15),
+        0 5px 15px rgba(0,0,0,0.06);
+
+    backdrop-filter: blur(4px);
+
+    margin: 20px auto;
+
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ===============================
+   TITLE
+================================ */
+#feedback-form .header {
+    margin: 0 0 25px 0;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: #2a2a2a;
+}
+
+
+/* ===============================
+   LABEL
+================================ */
+#feedback-form label {
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+}
+
+
+/* ===============================
+   INPUT / SELECT / TEXTAREA
+================================ */
+#feedback-form input,
+#feedback-form select,
+#feedback-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+
+    border: 1.5px solid #d6d6d6;
+    border-radius: 10px;
+    background: #fafafa;
+
+    font-size: 15px;
+    outline: none;
+    transition: 0.25s;
+}
+
+#feedback-form input:focus,
+#feedback-form select:focus,
+#feedback-form textarea:focus {
+    border-color: #3a6ea5;
+    background: #ffffff;
+    box-shadow: 0 0 8px rgba(58,110,165,0.4);
+}
+
+
+/* ===============================
+   BUTTONS
+================================ */
+
+#feedback-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 18px;
+
+    background: linear-gradient(135deg, #4b79a1, #355d7a);
+    border: none;
+    border-radius: 10px;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#feedback-form button:hover {
+    background: linear-gradient(135deg, #5f8fb8, #3f6e8d);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Tombol delete */
+#feedback-form button[name="delete"] {
+    background: #d9534f;
+}
+
+#feedback-form button[name="delete"]:hover {
+    background: #c9302c;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+
+/* ===============================
+   FORM LAYOUT
+================================ */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Buat textarea lebih cantik */
+#feedback-form textarea {
+    resize: vertical;
+    min-height: 90px;
+}

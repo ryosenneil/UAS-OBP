@@ -1,0 +1,88 @@
+/* =======================================
+   NAVBAR – versi diperbaiki
+======================================= */
+.navbar {
+    width: 100%;
+    padding: 16px 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Glass + lebih gelap agar teks terlihat */
+    background: rgba(2, 52, 117, 0.65);
+    backdrop-filter: blur(1px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.15),
+        inset 0 1px 1px rgba(255,255,255,0.08);
+
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    box-sizing: border-box; /* FIX POTONG */
+}
+
+
+/* =======================================
+   LEFT TITLE
+======================================= */
+.navbar-left a {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.navbar-left a:hover {
+    color: #d7e8ff;
+}
+
+
+/* =======================================
+   RIGHT LINKS
+======================================= */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.navbar-right a {
+    color: #e9f1ff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+
+    padding: 8px 12px;
+    border-radius: 8px;
+
+    transition: 0.25s;
+}
+
+.navbar-right a:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: white;
+}
+
+
+/* =======================================
+   LOGOUT BUTTON (Fix tidak terpotong)
+======================================= */
+.logout-btn {
+    background: #d9534f;
+    color: white !important;
+
+    padding: 8px 18px !important;
+    border-radius: 8px;
+
+    white-space: nowrap; /* FIX agar tidak terpotong */
+}
+
+.logout-btn:hover {
+    background: #c9302c;
+}

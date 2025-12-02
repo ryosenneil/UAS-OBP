@@ -1,0 +1,55 @@
+/* ===== Modern Stylish Table ===== */
+.styled-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 25px 0;
+    font-size: 0.95em;
+    font-family: "Inter", sans-serif;
+    min-width: 500px;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Header ===== */
+.styled-table thead tr {
+    background: linear-gradient(135deg, #0abfbc, #1a7fbd);
+    color: #ffffff;
+    font-weight: 700;
+    text-align: left;
+}
+
+/* ===== Cells ===== */
+.styled-table th,
+.styled-table td {
+    padding: 14px 18px;
+}
+
+/* ===== Body Rows ===== */
+.styled-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: 0.2s ease;
+}
+
+/* Row striping */
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f7f9fc;
+}
+
+/* Last row highlight border */
+.styled-table tbody tr:last-of-type {
+    border-bottom: 3px solid #1a7fbd;
+}
+
+/* Active Row */
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #1a7fbd;
+}
+
+/* Hover effect */
+.styled-table tbody tr:hover {
+    background-color: #e9f4ff;
+    transform: scale(1.003);
+}
